@@ -1,0 +1,37 @@
+---
+title: "Homework 1"
+author: "Emma Warshaw"
+date: "2022-09-23"
+output: github_document
+---
+
+```{r}
+library(tidyverse)
+```
+
+# Problem 1
+
+This problem will focus on use of inline R code, plotting and the behavior of `ggplot` for variables of different types.  
+
+I will first download the data package `penguins` with a command directly in the console per the assignment instructions. 
+
+Now, I'll load the dataset in the following code: 
+
+```{r}
+data("penguins", package = "palmerpenguins")
+penguins
+```
+
+Let's calculate the mean flipper length for use in the discussion of the data set: 
+
+```{r}
+mean(penguins$flipper_length_mm, na.rm = TRUE)
+```
+
+Short description of the dataset: 
+The 'penguins' dataset has `nrow=344` and `ncol=8`.  There are a total of eight variables including: species, island where the penguin lives, bill length (millimeters), bill depth (millimeters), flipper length (millimeters), body mass (grams), sex and year the data was recorded.  The average flipper length for penguins in the dataset is 200.92 millimeters.  
+
+
+
+# Problem 2
+
