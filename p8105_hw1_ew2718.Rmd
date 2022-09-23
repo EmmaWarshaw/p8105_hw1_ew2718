@@ -31,7 +31,12 @@ mean(penguins$flipper_length_mm, na.rm = TRUE)
 Short description of the dataset: 
 The 'penguins' dataset has `nrow=344` and `ncol=8`.  There are a total of eight variables including: species, island where the penguin lives, bill length (millimeters), bill depth (millimeters), flipper length (millimeters), body mass (grams), sex and year the data was recorded.  The average flipper length for penguins in the dataset is 200.92 millimeters.  
 
+Now make a scatterplot of `flipper_length_mm` (y) vs `bill_length_mm` (x).  Color the points using the `species` variable (adding `color=...`) inside the `aes` in your `ggplot` code.  Then, export the scatterplot to the project directory using `ggsave`.   
 
+```{r}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point() 
+ggsave("scatterplot_problem_1.pdf")
+```
 
 # Problem 2
 
