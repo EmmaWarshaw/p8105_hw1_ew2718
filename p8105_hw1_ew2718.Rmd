@@ -40,3 +40,52 @@ ggsave("scatterplot_problem_1.pdf")
 
 # Problem 2
 
+This problem is intended to emphasize variable types and introduce coercion; some awareness of how R treats numeric, character, and factor variables is necessary for working with these data types in practice.  
+
+Create a data frame comprised of: 
+  - a random sample of size 10 from a standard Normal distribution
+  - a logical vector indicating whether elements of the sample are greater than 0
+  - a character vector of length 10 
+  - a factor vector of length 10, with 3 different factor "levels"
+
+```{r}
+problem2_df = tibble(
+  normal = rnorm(10),
+  logical = normal > 0,
+  character = character(length = 10),
+  factor = factor(character(length = 10),(levels = 3))
+)
+```
+
+Try to take the mean of each variable in the data frame.  What works and what doesn't? 
+
+For the normal variable: 
+```{r}
+pull(problem2_df, var = normal)
+mean(problem2_df$normal)
+```
+This works.  
+
+For the logical variable:
+```{r}
+pull(problem2_df, var = logical)
+mean(problem2_df$logical)
+```
+This also works.  
+
+For the character variable:
+```{r}
+pull(problem2_df, var = character)
+mean(problem2_df$character)
+```
+This does not work because the argument is not numeric or logical. 
+
+For the factor variable: 
+```{r}
+pull(problem2_df, var = factor)
+mean(problem2_df$factor)
+```
+This also does not work because the argument is not numeric or logical. 
+
+
+
