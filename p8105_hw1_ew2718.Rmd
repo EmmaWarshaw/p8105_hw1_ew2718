@@ -29,7 +29,7 @@ mean(penguins$flipper_length_mm, na.rm = TRUE)
 ```
 
 Short description of the dataset: 
-The 'penguins' dataset has `nrow=344` and `ncol=8`.  There are a total of eight variables including: species, island where the penguin lives, bill length (millimeters), bill depth (millimeters), flipper length (millimeters), body mass (grams), sex and year the data was recorded.  The average flipper length for penguins in the dataset is 200.92 millimeters.  
+The 'penguins' dataset has `nrow=344` and `ncol=8`.  There are a total of eight variables including: species, island where the penguin lives, bill length (millimeters), bill depth (millimeters), flipper length (millimeters), body mass (grams), sex and year.  The average flipper length for penguins in the dataset is 200.92 millimeters.  
 
 Now make a scatterplot of `flipper_length_mm` (y) vs `bill_length_mm` (x).  Color the points using the `species` variable (adding `color=...`) inside the `aes` in your `ggplot` code.  Then, export the scatterplot to the project directory using `ggsave`.   
 
@@ -50,10 +50,10 @@ Create a data frame comprised of:
 
 ```{r}
 problem2_df = tibble(
-  normal = rnorm(10),
-  logical = normal > 0,
-  character = character(length = 10),
-  factor = factor(character(length = 10),(levels = 3))
+  normal_var = rnorm(10),
+  logical_var = normal_var > 0,
+  character_var = character(length = 10),
+  factor_var = factor(character(length = 10),(levels = 3))
 )
 ```
 
@@ -61,31 +61,37 @@ Try to take the mean of each variable in the data frame.  What works and what do
 
 For the normal variable: 
 ```{r}
-pull(problem2_df, var = normal)
-mean(problem2_df$normal)
+pull(problem2_df, var = normal_var)
+mean(problem2_df$normal_var)
 ```
 This works.  
 
 For the logical variable:
 ```{r}
-pull(problem2_df, var = logical)
-mean(problem2_df$logical)
+pull(problem2_df, var = logical_var)
+mean(problem2_df$logical_var)
 ```
 This also works.  
 
 For the character variable:
 ```{r}
-pull(problem2_df, var = character)
-mean(problem2_df$character)
+pull(problem2_df, var = character_var)
+mean(problem2_df$character_var)
 ```
 This does not work because the argument is not numeric or logical. 
 
 For the factor variable: 
 ```{r}
-pull(problem2_df, var = factor)
-mean(problem2_df$factor)
+pull(problem2_df, var = factor_var)
+mean(problem2_df$factor_var)
 ```
 This also does not work because the argument is not numeric or logical. 
 
-
+Write a code chunk that applies `as.numeric` to the logical, factor, and character variables. 
+```{r, results='hide'}
+as.numeric(problem2_df$logical_var)
+as.numeric(problem2_df$factor_var)
+as.numeric(problem2_df$character_var)
+```
+This code turns the logical variable into binary coding, correspdoing to whether or not the logical statement was met.  It gives 'NA' for the factor and character variables.  This is because we're asking r to assign numeric values to a character string variable.  It doesn't know what to assign as the numeric variable, so it gives NA.  This also explains why you cannot take a mean for either of these variables.  Since they're character based and not numeric, it can't calculate anything.  
 
